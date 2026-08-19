@@ -30,12 +30,9 @@ call tiktoksorter-env\Scripts\activate.bat
 echo [3/5] Upgrading pip...
 python -m pip install --upgrade pip
 
-echo [4/5] Installing base packages from requirements.txt...
-pip install -r requirements.txt
-
 echo.
 echo ----------------------------------------
-echo [5/5] Installing PyTorch...
+echo [4/5] Installing PyTorch first (important)
 echo.
 echo Choose your option:
 echo   1. NVIDIA GPU (CUDA 12.6) - Recommended for most people
@@ -46,14 +43,23 @@ echo.
 set /p choice="Enter number (1-4): "
 
 if "%choice%"=="1" (
-    pip install torch --index-url https://download.pytorch.org/whl/cu126
+    echo Installing PyTorch with CUDA 12.6...
+    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ) else if "%choice%"=="2" (
-    pip install torch --index-url https://download.pytorch.org/whl/cu128
+    echo Installing PyTorch with CUDA 12.8...
+    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
 ) else if "%choice%"=="3" (
-    pip install torch --index-url https://download.pytorch.org/whl/cu130
+    echo Installing PyTorch with CUDA 13.0...
+    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
 ) else (
-    pip install torch
+    echo Installing CPU-only PyTorch...
+    pip install torch torchvision
 )
+
+echo.
+echo ----------------------------------------
+echo [5/5] Installing remaining packages...
+pip install -r requirements.txt
 
 echo.
 echo ----------------------------------------
