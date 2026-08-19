@@ -86,11 +86,17 @@ ffmpeg from https://www.gyan.dev/ffmpeg/builds/ (the "release full" build),
 unzip it, and add its `bin` folder to your PATH — or just ask in the Discord and
 someone will walk you through it.
 
-### Step 3 — Get the app files
-
-Download this repository (green **Code** button → **Download ZIP**), and unzip it
+### Step 3 — Download the repository
+**Option A:**
+(green **Code** button → **Download ZIP**), and unzip it
 somewhere easy like your Desktop. You should have `clipfinder.py`, the launcher
 `.bat`, and this README together in one folder. **Keep them together.**
+
+**Option B:**
+Open a command prompt/terminal window in the desired directory you want to create the TikTok-Sorter folder in and paste the following command:
+```
+git clone https://github.com/NovaPMV/TikTok-Sorter.git
+```
 
 ---
 
