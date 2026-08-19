@@ -46,36 +46,38 @@ If you used an older version, here's what got added:
   
 ---
 
-## What you need (one-time setup)
+## Installation (one-time setup)
 
-You'll install three things once: **Python**, **ffmpeg**, and some **Python
-packages**. Follow every step in order. It looks long because it's spelled out
-for total beginners — the actual work is maybe 10 minutes plus download time.
+### What you need
+
+- **Python 3.10 or newer**
+- **ffmpeg**
+- An NVIDIA GPU is recommended (but not required)
+
+---
 
 ### Step 1 — Install Python
 
-1. Go to https://www.python.org/downloads/ and download Python (3.10 or newer).
-2. Run the installer.
-3. **VERY IMPORTANT:** on the first screen, check the box that says
-   **"Add Python to PATH"** before clicking Install. If you miss this, nothing
-   else will work. If you're not sure whether you did, just reinstall and tick it.
+1. Download Python from https://www.python.org/downloads/
+2. Run the installer
+3. **Important:** Check the box **"Add Python to PATH"** before clicking Install
 
-To confirm it worked: open **Command Prompt** (press the Windows key, type `cmd`,
-hit Enter) and type:
+Confirm it works by opening Command Prompt and typing:
 
-    python --version
+```
+python --version
+```
 
 If you see a version number, you're good. If it says "not recognized," Python
 isn't on your PATH — reinstall and make sure you tick that box.
 
 ### Step 2 — Install ffmpeg
 
-ffmpeg is the tool that reads your videos. In the same Command Prompt window, run:
+Open Command Prompt and run:
 
     winget install Gyan.FFmpeg
 
-Let it finish, then **close Command Prompt and open a new one** (this matters —
-the new window is what picks up ffmpeg). Confirm it worked:
+Let it finish, then **close Command Prompt and open a new one.** Confirm it worked:
 
     ffmpeg -version
 
@@ -84,36 +86,27 @@ ffmpeg from https://www.gyan.dev/ffmpeg/builds/ (the "release full" build),
 unzip it, and add its `bin` folder to your PATH — or just ask in the Discord and
 someone will walk you through it.
 
-### Step 3 — Install the Python packages
-
-In Command Prompt, run these **one line at a time**. Wait for each to finish
-before running the next. Doing them one by one avoids errors.
-
-    pip install numpy
-    pip install pillow
-    pip install fastapi
-    pip install "uvicorn[standard]"
-    pip install open_clip_torch
-
-Now install **torch** (the AI engine). **Pick ONE of these:**
-
-**Option A — you HAVE an NVIDIA graphics card (recommended, much faster):**
-
-    pip install torch --index-url https://download.pytorch.org/whl/cu121
-
-**Option B — you do NOT have an NVIDIA card (or Option A fails):**
-
-    pip install torch
-
-That's it for setup.
-
-### Step 4 — Get the app files
+### Step 3 — Get the app files
 
 Download this repository (green **Code** button → **Download ZIP**), and unzip it
 somewhere easy like your Desktop. You should have `clipfinder.py`, the launcher
 `.bat`, and this README together in one folder. **Keep them together.**
 
 ---
+
+### Step 4 — Run the setup
+1. Double-click setup.bat
+2. It will automatically:
+    - Create a virtual environment (tiktoksorter-env)
+    - Install all required packages from requirements.txt
+    - Ask you which version of PyTorch to install (GPU or CPU)
+
+When finished you should see something like:
+```
+Torch version: 2.x.x+cu126
+CUDA available: True
+```
+That's when you know that installation is complete.
 
 ## Running it
 
